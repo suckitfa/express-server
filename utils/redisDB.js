@@ -73,9 +73,9 @@ redis.zadd = (key, member, num) => {
         if (err) console.log(err);
     })
 }
-//获取一定范围内的元素
+//获取一定范围内的元素[min,max]
 tempData = async (key, min, max) => {
     let tData = await new Promise(resolve => {
-        // redis_client.zrev
-    })
+        redis_client.zRange()
+    }) 
 }
