@@ -1,18 +1,17 @@
-const redis = require('redis')
+const redis = require('redis');
 // 获取数据库配置
-const {redisConfig} = require('../config/db')
+const {redisConfig} = require('../config/db');
 // 获取redis链接
-const redis_client = redis.createClient(redisConfig)
+const redis_client = redis.createClient(redisConfig);
 // 连接成功
 redis_client.on('connect', () => {
-    console.log("链接成功")
-})
+    console.log("链接成功");
+});
 // 错误处理
 redis_client.on('error', (err) => {
-    console.log(err)
-})
+    console.log(err);
+});
 redis = {};
-
 // 根据模式获取全部键
 keys = async (cursor, re, count) => {
     let getTempKeys = await new Promise((resolve) => {
