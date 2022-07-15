@@ -76,6 +76,40 @@ redis.zadd = (key, member, num) => {
 //获取一定范围内的元素[min,max]
 tempData = async (key, min, max) => {
     let tData = await new Promise(resolve => {
-        redis_client.zRange()
+        redis_client.zrevrange([key,min,max,"WITHSCORES"],(err,res) =>{
+            return resolve(res);
+         }
+        )
     }) 
+    // 同时获取分值，转换为对象
+    let oData = [];
+    // 构造
+    for(let i = 0; i < tData.length; i = i + 2) {
+        oData.push({member:JSON.parse(tData[i]),score:tData[i+1]});
+    }
+    return oData;
 }
+redis.zrevrange = async (key, min = 0, max = -1) => {
+    return tempData[key, min, max];
+}
+
+// 有序集合的自增操作
+redis.zincrby =(key, member, NUM = 1) => {
+    member = JSON.stringify(member)
+    redis_client.zincrby(key, NUM, member, (err) => {
+        if (err) console.log(err)
+    })
+}
+// 有序集合通过member获取score
+tempZscore = async (key, member) => {
+    member = JSON.parse(member)
+    return await new Promise(resolve => {
+        console.log(res)
+        resolve(res)
+    })
+}
+redis.zscore = (key,member) => {
+    return tempZscore(key,member);
+}
+
+module.exports = redis;
