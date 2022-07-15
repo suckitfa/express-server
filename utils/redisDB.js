@@ -38,11 +38,10 @@ text = async key => {
         // 从连接中获取返回值
         redis_client.get(key,(err, res) => {
             return resolve(res)
-        })
-        // 将值转为本身的对象并返回
-        getTempValue = JSON.parse(getTempValue)
-        return getTempValue;
-    })
+        });
+    });
+      // 将值转为本身的对象并返回
+      return JSON.parse(getTempValue);
 }
 // 返回获取的值
 redis.get = async (key) => {

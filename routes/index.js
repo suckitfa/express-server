@@ -8,5 +8,5 @@ router.get('/getFooter', function(req, res, next) {
   // res.render('index', { title: 'Express' });
 });
 // 获取菜单
-router.get('./getNavMenu', getNavMenu);
+router.get('/getNavMenu', getNavMenu);
 module.exports = router;
