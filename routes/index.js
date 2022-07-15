@@ -10,5 +10,5 @@ router.get('/getNavMenu', getNavMenu);
 // 获取友情链接
 router.get('/getLinks', getLinks);
 // 获取首页轮播图
-router.get('getIndexPic',getIndexPic)
+router.get('/getIndexPic',getIndexPic)
 module.exports = router;
