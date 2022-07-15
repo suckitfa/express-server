@@ -1,4 +1,4 @@
-const redis = require('../utils/redisDB')
+let redis = require('../utils/redisDB')
 const util = require('../utils/common')
 exports.getNavMenu = (req,res, next) => {
     let key = req.headers.fapp + ":nav_menu"

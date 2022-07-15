@@ -1,4 +1,4 @@
-const redis = require('redis');
+let redis = require('redis');
 // 获取数据库配置
 const {redisConfig} = require('../config/db');
 // 获取redis链接
