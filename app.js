@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // 引入校验客户端
-var checkAPP = require('./utils/middleware')
+var {checkAPP} = require('./utils/middleware')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
