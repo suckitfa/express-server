@@ -17,3 +17,12 @@ exports.getFooter = (req, res, next) => {
         res.json(util.getReturnData(0,"",data));
     })
 }
+// 获取友情链接
+exports.getLinks = (req, res, next) => {
+    let key = req.headers.fapp + ":links"
+    // 获取数据
+    redis.get(key).then(data => {
+        console.log(data)
+        res.json(util.getReturnData(0, '', data));
+    })
+}
