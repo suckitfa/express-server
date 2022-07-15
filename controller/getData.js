@@ -26,3 +26,12 @@ exports.getLinks = (req, res, next) => {
         res.json(util.getReturnData(0, '', data));
     })
 }
+// 获取首页轮播图
+exports.getIndexPic = (req, res, next) => {
+    let key = req.headers.fapp + ":indexPic";
+    // 获取数据
+    redis.get(key).then(data => {
+        console.log(data);
+        res.json(util.getReturnData(0,'',data));
+    })
+}
