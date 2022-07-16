@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var util = require('../utils/common')
-var {getNavMenu,getFooter, getLinks, getIndexPic} = require('../controller/getData')
+var {getNavMenu,getFooter, getLinks, getIndexPic, getNewArticle,getHotArticle} = require('../controller/getData')
 
 // 获取footer显示
 router.get('/getFooter', getFooter);
@@ -13,4 +13,6 @@ router.get('/getLinks', getLinks);
 router.get('/getIndexPic',getIndexPic)
 //获取热点文章
 router.get('/getHotArticle',getHotArticle);
+// 获取文章列表
+router.get('/getNewArticle',getNewArticle)
 module.exports = router;

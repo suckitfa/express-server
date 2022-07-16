@@ -61,3 +61,28 @@ exports.getHotArticle = (req, res, next) => {
         res.json(util.getReturnData(0,'',t_data));
     })
 }
+// 获取最新文章列表
+exports.getNewArticle = (res, req, next) => {
+    let key = req.headers.fapp + ':a_time';
+    console.log(key)
+    redis.zrevrange(key,0, -1).then(async data => {
+        console.log(data);
+        let result = data.map(item => {
+            return redis.get(item.member).then(data1 => {
+                console.log(data1)
+                if (data1 && data1.show != 0) {
+                    return {
+                        title:data1.title,
+                        date:util.getLocalDate(item.score),
+                        id:data1.a_id
+                    }
+                } else {
+                    return {title:"文章暂未上线",data:"",id:0}
+                }
+            })
+        })
+        let t_data = Promise.all(result);
+        return res.json(util.getReturnData(0,'', t_data));
+    })
+
+}
